@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/guitarist-bass.iml" filepath="$PROJECT_DIR$/.idea/modules/guitarist-bass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/guitarist-bass_main.iml" filepath="$PROJECT_DIR$/.idea/modules/guitarist-bass_main.iml" group="guitarist-bass" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/guitarist-bass_test.iml" filepath="$PROJECT_DIR$/.idea/modules/guitarist-bass_test.iml" group="guitarist-bass" />
+    </modules>
+  </component>
+</project>
