@@ -3,13 +3,9 @@ package com.xpizza.bass.util;
 import java.util.UUID;
 
 /**
- *
- * @ClassName: UUIDs
- * @Description: TODO UUID产生工具
- * @author: Xpizza
- * @date: Jul 14, 2017 11:03:56 AM
+ * UUID生成器
  */
-public class UUIDs {
+public class Uuids {
 
     /**
      *
