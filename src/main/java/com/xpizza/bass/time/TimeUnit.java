@@ -1,6 +1,6 @@
 package com.xpizza.bass.time;
 
-public class Times {
+public class TimeUnit {
     public static final int ONE_MILLISECOND = 1;
     public static final int ONE_SECOND = 1000 * ONE_MILLISECOND;
     public static final int ONE_MINUTE = 60 * ONE_SECOND;

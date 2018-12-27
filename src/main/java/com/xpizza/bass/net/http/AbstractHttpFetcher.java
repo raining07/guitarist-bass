@@ -1,7 +1,7 @@
 package com.xpizza.bass.net.http;
 
 import com.xpizza.bass.io.Charset;
-import com.xpizza.bass.time.Times;
+import com.xpizza.bass.time.TimeUnit;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -19,7 +19,7 @@ public abstract class AbstractHttpFetcher {
     private String url;
 
     /** 默认时间为1分钟 */
-    private int timeout = Times.ONE_MINUTE;
+    private int timeout = TimeUnit.ONE_MINUTE;
 
     /** 是否需要长连接 */
     private boolean needKeepAlive = true;
