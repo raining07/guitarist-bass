@@ -1,14 +1,20 @@
 package com.xpizza.bass.sql;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * 数据库操作工具
  */
 public class DbUtil {
+    /**
+     * 获取数据库连接
+     * @return
+     */
+    public static Connection getConnection(DbConfig dbConfig) throws ClassNotFoundException, SQLException {
+        Class.forName(dbConfig.getDriver());
+        return DriverManager.getConnection(dbConfig.getUrl(), dbConfig.getUsername(), dbConfig.getPassword());
+    }
+
     /**
      * 释放数据库资源工具
      * @param rs

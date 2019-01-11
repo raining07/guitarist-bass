@@ -5,10 +5,7 @@ import com.xpizza.bass.util.ArrayUtil;
 import com.xpizza.bass.util.CollectionUtil;
 import com.xpizza.bass.util.MapUtil;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,26 +15,28 @@ import java.util.Map;
  * 数据库访问器
  */
 public class DbAccessor {
-    /** 数据库连接 */
+    /** 数据库配置 */
+    private DbConfig dbConfig;
+
     private Connection connection;
 
-    public DbAccessor(Connection connection) {
-        this.connection = connection;
+    public DbConfig getDbConfig() {
+        return dbConfig;
     }
 
-    public Connection getConnection() {
-
-        return connection;
+    public void setDbConfig(DbConfig dbConfig) {
+        this.dbConfig = dbConfig;
     }
 
-    public void setConnection(Connection connection) {
-        this.connection = connection;
+    public DbAccessor(DbConfig dbConfig) {
+        this.dbConfig = dbConfig;
     }
 
     /** 执行SQL */
     public void execute(String sql) {
         Statement stmt = null;
         try {
+            buildConnection(this.dbConfig);
             stmt = connection.createStatement();
             stmt.execute(sql);
         } catch (Throwable thr) {
@@ -51,6 +50,7 @@ public class DbAccessor {
     public void batchExecute(List<String> sqls) {
         Statement stmt = null;
         try {
+            buildConnection(this.dbConfig);
             stmt = connection.createStatement();
             for (String each : sqls) {
                 stmt.addBatch(each);
@@ -73,6 +73,7 @@ public class DbAccessor {
         Statement stmt = null;
         ResultSet rs = null;
         try {
+            buildConnection(this.dbConfig);
             stmt = connection.createStatement();
             rs = stmt.executeQuery(querySQL);
             ResultSetMetaData md = rs.getMetaData(); //获得结果集结构信息,元数据
@@ -172,5 +173,9 @@ public class DbAccessor {
             retMapping.put(line.get(keyKey), line.get(valKey));
         }
         return retMapping;
+    }
+
+    private void buildConnection(DbConfig dbConfig) throws SQLException, ClassNotFoundException {
+        this.connection = DbUtil.getConnection(dbConfig);
     }
 }
