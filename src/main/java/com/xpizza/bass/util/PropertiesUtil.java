@@ -17,14 +17,14 @@ public class PropertiesUtil {
 
     /**
      *
-     * @Title: getProperties
+     * @Title: loadProperties
      * @Description: TODO 从文件中读取所有属性,返回一个Map
      * @param fileName
      *            文件名
      * @return properties文件的所有键值对
      * @return: Map<String,String>
      */
-    public static Map<String, String> getProperties(String fileName) {
+    public static Map<String, String> loadProperties(String fileName) {
         Map<String, String> map = new HashMap<String, String>();
         Properties properties = new Properties();
         try {
@@ -44,7 +44,7 @@ public class PropertiesUtil {
 
     /**
      *
-     * @Title: getPropertyByKey
+     * @Title: getProperty
      * @Description: TODO 从文件中读取一个属性,获取它的值
      * @param fileName
      *            文件名
@@ -53,7 +53,7 @@ public class PropertiesUtil {
      * @return 属性的值
      * @return: String
      */
-    public static String getPropertyByKey(String fileName, String key) {
+    public static String getProperty(String fileName, String key) {
         Properties properties = new Properties();
         try {
             properties.load(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName));
